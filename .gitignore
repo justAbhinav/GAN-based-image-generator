@@ -1,0 +1,91 @@
+# General
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.egg-info/
+*.env
+*.venv
+.env
+.venv
+gan-api-venv/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Logs and debugging
+*.log
+*.out
+*.err
+*.pid
+*.gz
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Presentations
+*.pptx
+*.key
+*.odp
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+
+# OS generated files
+*.~lock.*
+*.swp
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Images and media
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.mp4
+*.mov
+*.avi
+
+# Build files
+dist/
+build/
+*.o
+*.so
+*.a
+*.out
+*.class
+*.jar
+*.war
+*.ear
+
+# Data directory
+data/

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%234f46e5' d='M224 96l16-32 32-16-32-16-16-32-16 32-32 16 32 16 16 32zM80 160l26.66-53.33L160 80l-53.34-26.67L80 0 53.34 53.33 0 80l53.34 26.67L80 160zm352 128l-26.66 53.33L352 368l53.34 26.67L432 448l26.66-53.33L512 368l-53.34-26.67L432 288zm70.62-193.77L417.77 9.38C411.53 3.12 403.34 0 395.15 0c-8.19 0-16.38 3.12-22.63 9.38L9.38 372.52c-12.5 12.5-12.5 32.76 0 45.25l84.85 84.85c6.25 6.25 14.44 9.37 22.62 9.37 8.19 0 16.38-3.12 22.63-9.37l363.14-363.15c12.5-12.48 12.5-32.75 0-45.24zM359.45 203.46l-50.91-50.91 86.6-86.6 50.91 50.91-86.6 86.6z'/></svg>">
+    <title>GAN Digit Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>GAN Digit Generator</h1>
+        <p>Create realistic handwritten digits using advanced AI technology</p>
+    </div>
+
+    <div class="container">
+        <div class="form-group">
+            <label for="digit">Enter a digit (0-9):</label>
+            <input type="number" id="digit" min="0" max="9" placeholder="0-9">
+        </div>
+        <button onclick="generate()">
+            <i class="fas fa-magic"></i> Generate Digit
+        </button>
+        
+        <div class="loading" id="loading">
+            <i class="fas fa-spinner"></i> Generating your digit... Please wait...
+        </div>
+
+        <div class="error-message" id="error"></div>
+
+        <div class="image-container">
+            <img id="result" style="display: none;" alt="Generated digit image">
+        </div>
+
+        <div class="features">
+            <div class="feature-item">
+                <i class="fas fa-robot"></i>
+                <h3>AI-Powered</h3>
+                <p>Powered by advanced GAN technology for realistic digit generation</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-bolt"></i>
+                <h3>Real-time Generation</h3>
+                <p>Get instant results with an optimized generation process</p>
+            </div>
+            <!-- <div class="feature-item">
+                <i class="fas fa-paint-brush"></i>
+                <h3>High Quality</h3>
+                <p>Generate crisp, clear handwritten digits every time</p>
+            </div> -->
+        </div>
+
+        <p class="info-text">
+            <i class="fas fa-info-circle"></i> This GAN model generates realistic handwritten digits using deep learning.
+            Enter any number between 0 and 9 to see the generated result. The model has been trained on the MNIST dataset
+            to produce high-quality, human-like handwritten digits.
+        </p>
+    </div>
+    
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
