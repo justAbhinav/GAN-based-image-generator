@@ -7,3 +7,4 @@ numpy>=1.22.0
 python-multipart
 slowapi==0.1.7
 limits==2.7.0
+gunicorn==20.1.0
