@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![GAN Architecture](gan-api\static\images\gan_architecture.jpg)
+![GAN Architecture](gan-api/static/images/gan_architecture.jpg)
 
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.6.0+cu126-red.svg)](https://pytorch.org/)
