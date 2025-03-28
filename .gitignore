@@ -40,11 +40,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Presentations
-*.pptx
-*.key
-*.odp
-
 # Temporary files
 *.tmp
 *.temp
@@ -66,9 +61,6 @@ yarn-error.log*
 *.7z
 
 # Images and media
-*.png
-*.jpg
-*.jpeg
 *.gif
 *.svg
 *.mp4
