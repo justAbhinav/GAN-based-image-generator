@@ -60,13 +60,6 @@ yarn-error.log*
 *.rar
 *.7z
 
-# Images and media
-*.gif
-*.svg
-*.mp4
-*.mov
-*.avi
-
 # Build files
 dist/
 build/
