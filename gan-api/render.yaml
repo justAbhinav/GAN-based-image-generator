@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: gan-web-service
+    name: GAN-based-image-generator
     runtime: docker
     env: python
     build:
