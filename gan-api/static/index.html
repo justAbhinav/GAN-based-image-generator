@@ -4,58 +4,78 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%234f46e5' d='M224 96l16-32 32-16-32-16-16-32-16 32-32 16 32 16 16 32zM80 160l26.66-53.33L160 80l-53.34-26.67L80 0 53.34 53.33 0 80l53.34 26.67L80 160zm352 128l-26.66 53.33L352 368l53.34 26.67L432 448l26.66-53.33L512 368l-53.34-26.67L432 288zm70.62-193.77L417.77 9.38C411.53 3.12 403.34 0 395.15 0c-8.19 0-16.38 3.12-22.63 9.38L9.38 372.52c-12.5 12.5-12.5 32.76 0 45.25l84.85 84.85c6.25 6.25 14.44 9.37 22.62 9.37 8.19 0 16.38-3.12 22.63-9.37l363.14-363.15c12.5-12.48 12.5-32.75 0-45.24zM359.45 203.46l-50.91-50.91 86.6-86.6 50.91 50.91-86.6 86.6z'/></svg>">
-    <title>GAN Digit Generator</title>
+    <title>GAN Image Generator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
     <div class="header">
-        <h1>GAN Digit Generator</h1>
-        <p>Create realistic handwritten digits using advanced AI technology</p>
+        <h1>GAN Image Generator</h1>
+        <p>Create realistic images using advanced AI technology</p>
     </div>
 
     <div class="container">
-        <div class="form-group">
-            <label for="digit">Enter a digit (0-9):</label>
-            <input type="number" id="digit" min="0" max="9" placeholder="0-9">
+        <div class="model-selector">
+            <button class="model-btn active" data-model="mnist">MNIST Digits</button>
+            <button class="model-btn" data-model="fashion">Fashion MNIST</button>
         </div>
-        <button onclick="generate()">
-            <i class="fas fa-magic"></i> Generate Digit
+
+        <div class="form-group">
+            <label for="class-input">Select a class:</label>
+            <div class="input-container">
+                <input type="number" id="class-input" min="0" max="9" placeholder="Enter a number (0-9)">
+                <select id="fashion-select" style="display: none;">
+                    <option value="">Choose a clothing item</option>
+                    <option value="0">T-shirt/top</option>
+                    <option value="1">Trouser</option>
+                    <option value="2">Pullover</option>
+                    <option value="3">Dress</option>
+                    <option value="4">Coat</option>
+                    <option value="5">Sandal</option>
+                    <option value="6">Shirt</option>
+                    <option value="7">Sneaker</option>
+                    <option value="8">Bag</option>
+                    <option value="9">Ankle boot</option>
+                </select>
+            </div>
+        </div>
+        <button id="generate-btn" onclick="generate()">
+            <i class="fas fa-magic"></i> Generate Images
         </button>
         
         <div class="loading" id="loading">
-            <i class="fas fa-spinner"></i> Generating your digit... Please wait...
+            <i class="fas fa-spinner"></i> Generating images... Please wait...
         </div>
 
         <div class="error-message" id="error"></div>
 
         <div class="image-container">
-            <img id="result" style="display: none;" alt="Generated digit image">
+            <img id="result" style="display: none;" alt="Generated images">
         </div>
 
         <div class="features">
             <div class="feature-item">
                 <i class="fas fa-robot"></i>
                 <h3>AI-Powered</h3>
-                <p>Powered by advanced GAN technology for realistic digit generation</p>
+                <p>Powered by advanced GAN technology for realistic image generation</p>
             </div>
             <div class="feature-item">
                 <i class="fas fa-bolt"></i>
                 <h3>Real-time Generation</h3>
                 <p>Get instant results with an optimized generation process</p>
             </div>
-            <!-- <div class="feature-item">
+            <div class="feature-item">
                 <i class="fas fa-paint-brush"></i>
                 <h3>High Quality</h3>
-                <p>Generate crisp, clear handwritten digits every time</p>
-            </div> -->
+                <p>Generate crisp, clear images every time</p>
+            </div>
         </div>
 
         <p class="info-text">
-            <i class="fas fa-info-circle"></i> This GAN model generates realistic handwritten digits using deep learning.
-            Enter any number between 0 and 9 to see the generated result. The model has been trained on the MNIST dataset
-            to produce high-quality, human-like handwritten digits.
+            <i class="fas fa-info-circle"></i> This GAN model generates realistic images using deep learning.
+            Enter any number between 0 and 9 to see the generated result. The model has been trained on either the MNIST dataset
+            for handwritten digits or the Fashion MNIST dataset for clothing items.
         </p>
     </div>
     

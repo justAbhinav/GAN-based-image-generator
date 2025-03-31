@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-class ConditionalGenerator(nn.Module):
+class BaseGenerator(nn.Module):
     def __init__(self, latent_dim=100, num_classes=10):
         super().__init__()
         self.label_emb = nn.Embedding(num_classes, num_classes)
@@ -24,3 +24,11 @@ class ConditionalGenerator(nn.Module):
         label_embedding = self.label_emb(labels)
         x = torch.cat([z, label_embedding], dim=1)
         return self.model(x).view(-1, 1, 28, 28)
+
+class MNISTGenerator(BaseGenerator):
+    def __init__(self):
+        super().__init__(latent_dim=100, num_classes=10)
+
+class FashionMNISTGenerator(BaseGenerator):
+    def __init__(self):
+        super().__init__(latent_dim=100, num_classes=10)

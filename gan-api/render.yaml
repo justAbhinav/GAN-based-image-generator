@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: gan-web-service
+    runtime: docker
+    env: python
+    build:
+      dockerfile: Dockerfile
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: true
+      - key: TORCH_CUDA_VERSION
+        value: cpu
+    resources:
+      memory: 1GB  # Minimum for Torch
+      cpu: 0.5
