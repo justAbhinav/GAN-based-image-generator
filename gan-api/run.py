@@ -23,7 +23,7 @@ def generate_qr(url):
     qr_image = qr.make_image(fill_color="black", back_color="white")
     
     # Save the QR code image
-    qr_path = "static/qr_code.png"
+    qr_path = "qr_code.png"
     qr_image.save(qr_path)
     return qr_path
 
