@@ -1,13 +1,41 @@
 import uvicorn
 from pyngrok import ngrok
 import webbrowser
+import qrcode
+import os
+from PIL import Image
+import time
+
+def generate_qr(url):
+    # Create QR code instance
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    
+    # Add the URL to the QR code
+    qr.add_data(url)
+    qr.make(fit=True)
+    
+    # Create an image from the QR Code
+    qr_image = qr.make_image(fill_color="black", back_color="white")
+    
+    # Save the QR code image
+    qr_path = "static/qr_code.png"
+    qr_image.save(qr_path)
+    return qr_path
 
 if __name__ == "__main__":
     # Start the FastAPI server
     public_url = ngrok.connect(8000).public_url
     print(f"\nPublic URL: {public_url}")
-    print("Share this URL with your audience!")
     print("Press Ctrl+C to stop the server\n")
+    
+    # Generate and display QR code
+    qr_path = generate_qr(public_url)
+    print(f"QR Code has been generated and saved to: {qr_path}")
     
     # Open the URL in the default browser
     webbrowser.open(public_url)
