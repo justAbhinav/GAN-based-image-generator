@@ -6,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
-from model import MNISTGenerator, FashionMNISTGenerator
+from model import DigitMNISTGenerator, FashionMNISTGenerator
 from pathlib import Path
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
@@ -15,6 +15,11 @@ from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from dotenv import load_dotenv
 import os
 import logging
+
+# Constants
+ImageSize = 28
+mnistDigitLatentSize = 100
+fashionMNISTLatentSize = 175
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -72,7 +77,7 @@ def load_models():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     # Load MNIST model
-    mnist_model = MNISTGenerator().to(device)
+    mnist_model = DigitMNISTGenerator().to(device)
     mnist_model.load_state_dict(torch.load(os.getenv("MODEL_PATH_MNIST", "models/mnist_digit_generator.pth"), map_location=device))
     mnist_model.eval()
     
@@ -122,7 +127,7 @@ def create_grid_image(generated_images, cell_padding=15, grid_spacing=8, image_s
 async def generate_mnist(request: Request, digit: int = Form(..., ge=0, le=9)):
     try:
         logger.info(f"Generating MNIST images for digit: {digit}")
-        z = torch.randn(6, 100).to(device)
+        z = torch.randn(6, mnistDigitLatentSize).to(device)
         label = torch.tensor([digit] * 6, dtype=torch.long).to(device)
         
         with torch.no_grad():
@@ -145,7 +150,7 @@ async def generate_mnist(request: Request, digit: int = Form(..., ge=0, le=9)):
 async def generate_fashion(request: Request, class_id: int = Form(..., ge=0, le=9)):
     try:
         logger.info(f"Generating Fashion MNIST images for class: {class_id}")
-        z = torch.randn(6, 100).to(device)
+        z = torch.randn(6, fashionMNISTLatentSize).to(device)
         label = torch.tensor([class_id] * 6, dtype=torch.long).to(device)
         
         with torch.no_grad():

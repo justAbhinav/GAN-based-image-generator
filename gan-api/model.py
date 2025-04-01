@@ -1,8 +1,11 @@
 import torch
 import torch.nn as nn
 
+mnistDigitLatentSize = 100
+fashionMNISTLatentSize = 175
+
 class BaseGenerator(nn.Module):
-    def __init__(self, latent_dim=100, num_classes=10):
+    def __init__(self, latent_dim, num_classes=10):
         super().__init__()
         self.label_emb = nn.Embedding(num_classes, num_classes)
         
@@ -25,10 +28,10 @@ class BaseGenerator(nn.Module):
         x = torch.cat([z, label_embedding], dim=1)
         return self.model(x).view(-1, 1, 28, 28)
 
-class MNISTGenerator(BaseGenerator):
+class DigitMNISTGenerator(BaseGenerator):
     def __init__(self):
-        super().__init__(latent_dim=100, num_classes=10)
+        super().__init__(latent_dim=mnistDigitLatentSize, num_classes=10)
 
 class FashionMNISTGenerator(BaseGenerator):
     def __init__(self):
-        super().__init__(latent_dim=100, num_classes=10)
+        super().__init__(latent_dim=fashionMNISTLatentSize, num_classes=10)
